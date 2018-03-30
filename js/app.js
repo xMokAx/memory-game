@@ -1,7 +1,18 @@
 /*
  * Create a list that holds all of your cards
  */
-
+function createCardsList() {
+    const cardList = [];
+    for (let i = 0; i < 8; i++) {
+        const card = document.createElement('li');
+        card.classList.add('card');
+        const cardHtml = document.createElement('i');
+        card.appendChild(cardHtml);
+        cardList.push(card);
+    }
+    return cardList;
+}
+console.log(createCardsList());
 
 /*
  * Display the cards on the page
