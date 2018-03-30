@@ -1,12 +1,39 @@
 /*
  * Create a list that holds all of your cards
  */
+
 function createCardsList() {
     const cardList = [];
     for (let i = 0; i < 8; i++) {
         const card = document.createElement('li');
         card.classList.add('card');
         const cardHtml = document.createElement('i');
+        cardHtml.classList.add('fa');
+            switch(i) {
+                case 0:
+                    cardHtml.classList.add('fa-diamond');
+                    break;
+                case 1:
+                    cardHtml.classList.add('fa-paper-plane-o');
+                    break;
+                case 2:
+                    cardHtml.classList.add('fa-anchor');
+                    break;
+                case 3:
+                    cardHtml.classList.add('fa-bolt');
+                    break;
+                case 4:
+                    cardHtml.classList.add('fa-cube');
+                    break;
+                case 5:
+                    cardHtml.classList.add('fa-leaf');
+                    break;
+                case 6:
+                    cardHtml.classList.add('a-bicycle');
+                    break;
+                case 7:
+                    cardHtml.classList.add('fa-bomb');
+            }
         card.appendChild(cardHtml);
         cardList.push(card);
     }
