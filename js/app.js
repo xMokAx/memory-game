@@ -4,7 +4,7 @@
 
 function createCardsList() {
     const cardList = [];
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 16; i++) {
         const card = document.createElement('li');
         card.classList.add('card');
         const cardHtml = document.createElement('i');
@@ -33,6 +33,30 @@ function createCardsList() {
                     break;
                 case 7:
                     cardHtml.classList.add('fa-bomb');
+                    break;
+                case 8:
+                    cardHtml.classList.add('fa-diamond');
+                    break;
+                case 9:
+                    cardHtml.classList.add('fa-paper-plane-o');
+                    break;
+                case 10:
+                    cardHtml.classList.add('fa-anchor');
+                    break;
+                case 11:
+                    cardHtml.classList.add('fa-bolt');
+                    break;
+                case 12:
+                    cardHtml.classList.add('fa-cube');
+                    break;
+                case 13:
+                    cardHtml.classList.add('fa-leaf');
+                    break;
+                case 14:
+                    cardHtml.classList.add('a-bicycle');
+                    break;
+                case 15:
+                    cardHtml.classList.add('fa-bomb');
             }
         card.appendChild(cardHtml);
         cardList.push(card);
@@ -47,6 +71,7 @@ console.log(createCardsList());
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
