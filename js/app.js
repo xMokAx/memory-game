@@ -71,7 +71,20 @@ console.log(createCardsList());
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+function displayCrads() {
+    const shuffledCardList = shuffle(createCardsList());
 
+    const fragment = document.createDocumentFragment();
+    const cardsDeck = document.querySelector('.deck');
+
+    shuffledCardList.forEach((card) => {
+        fragment.appendChild(card);
+    });
+
+    cardsDeck.appendChild(fragment);
+}
+
+displayCrads();
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
