@@ -121,6 +121,7 @@ cardsDeck.addEventListener('click', (e) => {
         console.log(openCardsList);
         //check if the opensCardsList has more than one card and that its number of cards is an event number
         if (openCardsList.length > 1 && openCardsList.length % 2 === 0) {
+            incrementMoves();
             console.log(e.target.childNodes[0].classList.toString());
             console.log(openCardsList[1].childNodes[0].classList.toString());
             //check if the added card has the same symbol as the last added before it
@@ -154,4 +155,9 @@ function cardsMatched(card1,card2) {
     card1.classList.add('match');
     card2.classList.remove('open', 'show');
     card2.classList.add('match');
+}
+//increment the moves counter
+function incrementMoves() {
+    const moves = document.querySelector('.moves');
+    moves.textContent++;
 }
