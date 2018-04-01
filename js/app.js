@@ -173,13 +173,13 @@ function displayWinMessage() {
     const winSummary = document.querySelector('.win-summary');
     const winScreen= document.querySelector('.win-screen');
     setTimeout(() => {
-        winSummary.innerHTML = `with ${numberOfMoves} moves!<br><span>Woooooo!</span>`; 
+        winSummary.innerHTML = `with ${numberOfMoves} moves!<br><span>Wooooooo!</span>`; 
         winScreen.classList.remove('hidden');
     }, 1000);        
 }
 
 //make the play again button restart the game by reloading the page on click
-const playAgainButton = document.querySelector('.play-again');
+const playAgainButton = document.querySelector('.btn-reload');
 playAgainButton.addEventListener('click', () => {
     window.location.reload();
 });
