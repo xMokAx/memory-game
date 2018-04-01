@@ -135,7 +135,7 @@ cardsDeck.addEventListener('click', (e) => {
             }
         }
         if(openCardsList.length === 16) {
-            winMessage();
+            displayWinMessage();
         }
     }
 });
@@ -167,22 +167,13 @@ function incrementMoves() {
     const moves = document.querySelector('.moves');
     moves.textContent++;
 }
-//create win screen and append it
-function winMessage() {
-    const numberOfMoves = document.querySelector('.moves').textContent
-    const fragment = document.createDocumentFragment();
-    const winScreen = document.createElement('div');
-    winScreen.classList.add('win-screen');
-    winScreen.insertAdjacentHTML('afterbegin', 
-    `<div class="win-message">
-        <i class="fa fa-check-circle-o"></i>
-        <h1 class="win-heading">Congratulations! You Won!</h1>
-        <p class="win-summary">with ${numberOfMoves} moves!</p>
-        <p class="win-summary">Woooooo!</p>
-        <button class="play-again">Play Again</button>
-    </div>`);
-    fragment.appendChild(winScreen);
+//show win screen with game summary
+function displayWinMessage() {
+    const numberOfMoves = document.querySelector('.moves').textContent;
+    const winSummary = document.querySelector('.win-summary');
+    const winScreen= document.querySelector('.win-screen');
     setTimeout(() => {
-        document.querySelector('.container').appendChild(fragment);
-    }, 1000);
+        winSummary.innerHTML = `with ${numberOfMoves} moves!<br><span>Woooooo!</span>`; 
+        winScreen.classList.remove('hidden');
+    }, 1000);        
 }
