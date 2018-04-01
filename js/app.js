@@ -177,3 +177,9 @@ function displayWinMessage() {
         winScreen.classList.remove('hidden');
     }, 1000);        
 }
+
+//make the play again button restart the game by reloading the page on click
+const playAgainButton = document.querySelector('.play-again');
+playAgainButton.addEventListener('click', () => {
+    window.location.reload();
+});
