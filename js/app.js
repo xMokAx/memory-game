@@ -122,17 +122,20 @@ cardsDeck.addEventListener('click', (e) => {
         //check if the opensCardsList has more than one card and that its number of cards is an event number
         if (openCardsList.length > 1 && openCardsList.length % 2 === 0) {
             incrementMoves();
-            console.log(e.target.childNodes[0].classList.toString());
             console.log(openCardsList[1].childNodes[0].classList.toString());
+            console.log(e.target.childNodes[0].classList.toString());
             //check if the added card has the same symbol as the last added before it
             if (e.target.childNodes[0].classList.toString() === openCardsList[1].childNodes[0].classList.toString()) {
                 cardsMatched(e.target, openCardsList[1]);
                 console.log(openCardsList);
             } else {
-                hideCardSymbol(e.target, openCardsList);
-                hideCardSymbol(openCardsList[0], openCardsList);
+                hideCardSymbol(e.target);
+                hideCardSymbol(openCardsList[0]);
                 console.log(openCardsList);
             }
+        }
+        if(openCardsList.length === 16) {
+            winMessage();
         }
     }
 });
@@ -147,7 +150,10 @@ function createOpenCardsList(card) {
 //hide the card symbol of the given card and delete it from the openCardsList
 function hideCardSymbol(card) {
     openCardsList = openCardsList.filter((element) => card !== element);
-    card.classList.remove('open', 'show');
+    card.classList.add('wrong');
+    setTimeout(() => {
+        card.classList.remove('open', 'show', 'wrong');
+    }, 1000);
 }
 //change the two given cards class to be match
 function cardsMatched(card1,card2) {
@@ -160,4 +166,23 @@ function cardsMatched(card1,card2) {
 function incrementMoves() {
     const moves = document.querySelector('.moves');
     moves.textContent++;
+}
+//create win screen and append it
+function winMessage() {
+    const numberOfMoves = document.querySelector('.moves').textContent
+    const fragment = document.createDocumentFragment();
+    const winScreen = document.createElement('div');
+    winScreen.classList.add('win-screen');
+    winScreen.insertAdjacentHTML('afterbegin', 
+    `<div class="win-message">
+        <i class="fa fa-check-circle-o"></i>
+        <h1 class="win-heading">Congratulations! You Won!</h1>
+        <p class="win-summary">with ${numberOfMoves} moves!</p>
+        <p class="win-summary">Woooooo!</p>
+        <button class="play-again">Play Again</button>
+    </div>`);
+    fragment.appendChild(winScreen);
+    setTimeout(() => {
+        document.querySelector('.container').appendChild(fragment);
+    }, 1000);
 }
