@@ -121,6 +121,7 @@ cardsDeck.addEventListener('click', (e) => {
         //check if the opensCardsList has more than one card and that its number of cards is an event number
         if (openCardsList.length > 1 && openCardsList.length % 2 === 0) {
             incrementMoves();
+            decrementStars();
             console.log(openCardsList[1].childNodes[0].classList.toString());
             console.log(e.target.childNodes[0].classList.toString());
             //check if the added card has the same symbol as the last added before it
@@ -173,13 +174,33 @@ function incrementMoves() {
     moves.textContent++;
 }
 
+//decrease the number of stars
+function decrementStars() {
+    const moves = document.querySelector('.moves');
+    const stars = document.querySelectorAll('.fa-star');
+    switch (moves.textContent) {
+        case "7":
+            stars[2].classList.remove('fa-star');
+            stars[2].classList.add('fa-star-o');
+            break;
+        case "14":
+            stars[1].classList.remove('fa-star');
+            stars[1].classList.add('fa-star-o');
+            break;
+        case "21":
+            stars[0].classList.remove('fa-star');
+            stars[0].classList.add('fa-star-o');
+    }
+}
+
 //show win screen with game summary
 function displayWinMessage() {
     const numberOfMoves = document.querySelector('.moves').textContent;
     const winSummary = document.querySelector('.win-summary');
     const winScreen = document.querySelector('.win-screen');
+    const starsCount = document.querySelectorAll('.fa-star').length;
     setTimeout(() => {
-        winSummary.innerHTML = `with ${numberOfMoves} moves!<br><span>Wooooooo!</span>`;
+        winSummary.innerHTML = `with ${numberOfMoves} moves and ${starsCount} stars<br><span>Wooooooo!</span>`;
         winScreen.classList.remove('hidden');
     }, 1000);
 }
