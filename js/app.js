@@ -1,62 +1,61 @@
 /*
  * Create a list that holds all of your cards
  */
-
 function createCardsList() {
     const cardList = [];
     for (let i = 0; i < 16; i++) {
         const card = document.createElement('li');
         card.classList.add('card');
         const cardHtml = document.createElement('i');
-            switch(i) {
-                case 0:
-                    cardHtml.classList.add('fa', 'fa-diamond');
-                    break;
-                case 1:
-                    cardHtml.classList.add('fa', 'fa-paper-plane-o');
-                    break;
-                case 2:
-                    cardHtml.classList.add('fa', 'fa-anchor');
-                    break;
-                case 3:
-                    cardHtml.classList.add('fa', 'fa-bolt');
-                    break;
-                case 4:
-                    cardHtml.classList.add('fa', 'fa-cube');
-                    break;
-                case 5:
-                    cardHtml.classList.add('fa', 'fa-leaf');
-                    break;
-                case 6:
-                    cardHtml.classList.add('fa', 'fa-bicycle');
-                    break;
-                case 7:
-                    cardHtml.classList.add('fa', 'fa-bomb');
-                    break;
-                case 8:
-                    cardHtml.classList.add('fa', 'fa-diamond');
-                    break;
-                case 9:
-                    cardHtml.classList.add('fa', 'fa-paper-plane-o');
-                    break;
-                case 10:
-                    cardHtml.classList.add('fa', 'fa-anchor');
-                    break;
-                case 11:
-                    cardHtml.classList.add('fa', 'fa-bolt');
-                    break;
-                case 12:
-                    cardHtml.classList.add('fa', 'fa-cube');
-                    break;
-                case 13:
-                    cardHtml.classList.add('fa', 'fa-leaf');
-                    break;
-                case 14:
-                    cardHtml.classList.add('fa', 'fa-bicycle');
-                    break;
-                case 15:
-                    cardHtml.classList.add('fa', 'fa-bomb');
-            }
+        switch (i) {
+            case 0:
+                cardHtml.classList.add('fa', 'fa-diamond');
+                break;
+            case 1:
+                cardHtml.classList.add('fa', 'fa-paper-plane-o');
+                break;
+            case 2:
+                cardHtml.classList.add('fa', 'fa-anchor');
+                break;
+            case 3:
+                cardHtml.classList.add('fa', 'fa-bolt');
+                break;
+            case 4:
+                cardHtml.classList.add('fa', 'fa-cube');
+                break;
+            case 5:
+                cardHtml.classList.add('fa', 'fa-leaf');
+                break;
+            case 6:
+                cardHtml.classList.add('fa', 'fa-bicycle');
+                break;
+            case 7:
+                cardHtml.classList.add('fa', 'fa-bomb');
+                break;
+            case 8:
+                cardHtml.classList.add('fa', 'fa-diamond');
+                break;
+            case 9:
+                cardHtml.classList.add('fa', 'fa-paper-plane-o');
+                break;
+            case 10:
+                cardHtml.classList.add('fa', 'fa-anchor');
+                break;
+            case 11:
+                cardHtml.classList.add('fa', 'fa-bolt');
+                break;
+            case 12:
+                cardHtml.classList.add('fa', 'fa-cube');
+                break;
+            case 13:
+                cardHtml.classList.add('fa', 'fa-leaf');
+                break;
+            case 14:
+                cardHtml.classList.add('fa', 'fa-bicycle');
+                break;
+            case 15:
+                cardHtml.classList.add('fa', 'fa-bomb');
+        }
         card.appendChild(cardHtml);
         cardList.push(card);
     }
@@ -87,7 +86,8 @@ displayCrads();
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    var currentIndex = array.length,
+        temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -99,7 +99,6 @@ function shuffle(array) {
 
     return array;
 }
-
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -134,19 +133,23 @@ cardsDeck.addEventListener('click', (e) => {
                 console.log(openCardsList);
             }
         }
-        if(openCardsList.length === 16) {
-            displayWinMessage();
-        }
+    }
+
+    if (openCardsList.length === 16) {
+        displayWinMessage();
     }
 });
+
 //show the card symbol by adding these 2 classes
 function displayCardSymbol(card) {
     card.classList.add('open', 'show');
 }
+
 //add the given card to the openCardsList
 function createOpenCardsList(card) {
     openCardsList = [card].concat(openCardsList);
 }
+
 //hide the card symbol of the given card and delete it from the openCardsList
 function hideCardSymbol(card) {
     openCardsList = openCardsList.filter((element) => card !== element);
@@ -155,27 +158,30 @@ function hideCardSymbol(card) {
         card.classList.remove('open', 'show', 'wrong');
     }, 1000);
 }
+
 //change the two given cards class to be match
-function cardsMatched(card1,card2) {
+function cardsMatched(card1, card2) {
     card1.classList.remove('open', 'show');
     card1.classList.add('match');
     card2.classList.remove('open', 'show');
     card2.classList.add('match');
 }
+
 //increment the moves counter
 function incrementMoves() {
     const moves = document.querySelector('.moves');
     moves.textContent++;
 }
+
 //show win screen with game summary
 function displayWinMessage() {
     const numberOfMoves = document.querySelector('.moves').textContent;
     const winSummary = document.querySelector('.win-summary');
-    const winScreen= document.querySelector('.win-screen');
+    const winScreen = document.querySelector('.win-screen');
     setTimeout(() => {
-        winSummary.innerHTML = `with ${numberOfMoves} moves!<br><span>Wooooooo!</span>`; 
+        winSummary.innerHTML = `with ${numberOfMoves} moves!<br><span>Wooooooo!</span>`;
         winScreen.classList.remove('hidden');
-    }, 1000);        
+    }, 1000);
 }
 
 //make the play again button restart the game by reloading the page on click
