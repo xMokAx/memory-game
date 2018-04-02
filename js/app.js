@@ -83,7 +83,7 @@ function displayCrads() {
 // display the cards
 displayCrads();
 // start the timer
-const timePassed = setInterval(setTime, 1000);
+let timePassed = setInterval(setTime, 1000);
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -115,7 +115,7 @@ const cardsDeck = document.querySelector('.deck');
 let openCardsList = [];
 cardsDeck.addEventListener('click', (e) => {
     //check if the clicked element is li and that it has only the card class
-    if (e.target.nodeName === 'LI' && e.target.classList.toString() === "card") {
+    if (e.target.nodeName === 'LI' && e.target.className === "card") {
         displayCardSymbol(e.target);
         createOpenCardsList(e.target);
         //check if the opensCardsList has more than one card and that its number of cards is an event number
@@ -123,7 +123,7 @@ cardsDeck.addEventListener('click', (e) => {
             incrementMoves();
             decrementStars();
             //check if the added card has the same symbol as the last added before it
-            if (e.target.childNodes[0].classList.toString() === openCardsList[1].childNodes[0].classList.toString()) {
+            if (e.target.childNodes[0].className === openCardsList[1].childNodes[0].className) {
                 cardsMatched(e.target, openCardsList[1]);
             } else {
                 hideCardSymbol(e.target);
@@ -177,16 +177,13 @@ function decrementStars() {
     const stars = document.querySelectorAll('.fa-star');
     switch (moves.textContent) {
         case "11":
-            stars[2].classList.remove('fa-star');
-            stars[2].classList.add('fa-star-o');
+            stars[2].className = "fa fa-star-o";
             break;
         case "15":
-            stars[1].classList.remove('fa-star');
-            stars[1].classList.add('fa-star-o');
+            stars[1].className = "fa fa-star-o";
             break;
         case "20":
-            stars[0].classList.remove('fa-star');
-            stars[0].classList.add('fa-star-o');
+            stars[0].className = "fa fa-star-o";
     }
 }
 
