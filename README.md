@@ -1,14 +1,13 @@
 # Memory Game Project
 
 This project is part of the Udacity Front End Nanodegree.
-
+* **Try it now:** https://xmokax.github.io/memory-game/
 ## Table of Contents
 
 * [How It Works](#how-it-works)
 
 ## How it Works
 A simple matching game with 16 cards.
-* **Try it now:** https://xmokax.github.io/memory-game/
 
 ### when the game starts:
 * A timer start counting and stops when you finish.

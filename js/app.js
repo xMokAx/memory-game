@@ -204,16 +204,10 @@ function displayWinMessage() {
     const starsCount = document.querySelectorAll('.fa-star').length;
     setTimeout(() => {
         const time = minutesLabel.textContent + ":" + secondsLabel.textContent;
-        winSummary.innerHTML = `Finished in ${time} with ${numberOfMoves} moves and ${starsCount} stars<br><span>Wooooooo!</span>`;
+        winSummary.innerHTML = `Finished in ${time} with ${numberOfMoves} moves and ${starsCount} stars.<br><span>Wooooooo!</span>`;
         winScreen.classList.remove('hidden');
     }, 1000);
 }
-
-//make the play again button restart the game by reloading the page on click
-const playAgainButton = document.querySelector('.btn-reload');
-playAgainButton.addEventListener('click', () => {
-    restart();
-});
 
 //create a simple count up timer
 const minutesLabel = document.getElementById("minutes");
@@ -251,10 +245,20 @@ function restart() {
     minutesLabel.textContent = "00";
     secondsLabel.textContent = "00";
     totalSeconds = 0;
+    timePassed = setInterval(setTime, 1000);
 }
 
 //call restart function when restart button is clicked
 const restartButton = document.querySelector('.restart');
 restartButton.addEventListener('click', () => {
+    clearInterval(timePassed);
+    restart();
+});
+
+//make the play again button restart the game
+const playAgainButton = document.querySelector('.btn-reload');
+playAgainButton.addEventListener('click', () => {
+    const winScreen = document.querySelector('.win-screen');
+    winScreen.classList.add('hidden');
     restart();
 });
