@@ -4,7 +4,7 @@ This project is part of the Udacity Front End Nanodegree.
 
 ## Table of Contents
 
-* [How It Works](#How-It-Works)
+* [How It Works](#how-it-works)
 
 ## How it Works
 A simple matching game with 16 cards.
