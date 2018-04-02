@@ -40,22 +40,22 @@ h1 {
  */
 
 .deck {
-    width: 660px;
-    min-height: 680px;
+    width: 95%;
+    max-width: 660px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-    padding: 32px;
+    padding: 4.85vw;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    margin: 0 0 3em;
+    margin: 0;
 }
 
 .deck .card {
-    height: 125px;
-    width: 125px;
+    flex: 0 0 20%;
+    margin: 5px;
     transition: transform 0.25s ease;
     background: #2e3d49;
     font-size: 0;
@@ -68,6 +68,12 @@ h1 {
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
+.deck .card:before {
+    content: '';
+    display: table;
+    padding-top: 100%;
+}
+
 .deck .card.open {
     transform: rotateY(360deg);
     transition: transform 0.25s ease;
@@ -76,14 +82,14 @@ h1 {
 }
 
 .deck .card.show {
-    font-size: 33px;
+    font-size: 5vw;
 }
 
 .deck .card.match {
     cursor: default;
     animation: resize 0.5s 1 ease;
     background: #02ccba;
-    font-size: 33px;
+    font-size: 5vw;
 }
 
 @keyframes resize {
