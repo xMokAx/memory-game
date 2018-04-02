@@ -219,18 +219,20 @@ playAgainButton.addEventListener('click', () => {
 const minutesLabel = document.getElementById("minutes");
 const secondsLabel = document.getElementById("seconds");
 let totalSeconds = 0;
+
 function setTime() {
-  ++totalSeconds;
-  secondsLabel.innerHTML = pad(totalSeconds % 60);
-  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+    ++totalSeconds;
+    secondsLabel.innerHTML = pad(totalSeconds % 60);
+    minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
 }
+
 function pad(val) {
-  const valString = val + "";
-  if (valString.length < 2) {
-    return "0" + valString;
-  } else {
-    return valString;
-  }
+    const valString = val + "";
+    if (valString.length < 2) {
+        return "0" + valString;
+    } else {
+        return valString;
+    }
 }
 
 //restart the board, the move counter, the stars and the timer
