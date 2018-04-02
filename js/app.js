@@ -182,15 +182,15 @@ function decrementStars() {
     const moves = document.querySelector('.moves');
     const stars = document.querySelectorAll('.fa-star');
     switch (moves.textContent) {
-        case "7":
+        case "11":
             stars[2].classList.remove('fa-star');
             stars[2].classList.add('fa-star-o');
             break;
-        case "14":
+        case "15":
             stars[1].classList.remove('fa-star');
             stars[1].classList.add('fa-star-o');
             break;
-        case "21":
+        case "20":
             stars[0].classList.remove('fa-star');
             stars[0].classList.add('fa-star-o');
     }
