@@ -8,6 +8,7 @@ This project is part of the Udacity Front End Nanodegree.
 
 ## How it Works
 A simple matching game with 16 cards.
+* **Try it now:** https://xmokax.github.io/memory-game/
 
 ### when the game starts:
 * A timer start counting and stops when you finish.
