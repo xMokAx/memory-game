@@ -212,7 +212,7 @@ function displayWinMessage() {
 //make the play again button restart the game by reloading the page on click
 const playAgainButton = document.querySelector('.btn-reload');
 playAgainButton.addEventListener('click', () => {
-    window.location.reload();
+    restart();
 });
 
 //create a simple count up timer
@@ -232,3 +232,27 @@ function pad(val) {
     return valString;
   }
 }
+
+//restart the board, the move counter, the stars and the timer
+function restart() {
+    while (cardsDeck.firstChild) {
+        cardsDeck.removeChild(cardsDeck.firstChild);
+    }
+    displayCrads();
+    openCardsList = [];
+    const moves = document.querySelector('.moves');
+    moves.textContent = "0";
+    const stars = document.querySelector('.stars').children;
+    for (let i = 0; i < stars.length; i++) {
+        stars[i].firstElementChild.className = "fa fa-star";
+    }
+    minutesLabel.textContent = "00";
+    secondsLabel.textContent = "00";
+    totalSeconds = 0;
+}
+
+//call restart function when restart button is clicked
+const restartButton = document.querySelector('.restart');
+restartButton.addEventListener('click', () => {
+    restart();
+});
