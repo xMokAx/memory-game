@@ -81,8 +81,10 @@ function displayCrads() {
 
     cardsDeck.appendChild(fragment);
 }
-
+// display the cards
 displayCrads();
+// start the timer
+const timePassed = setInterval(setTime, 1000);
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -137,6 +139,7 @@ cardsDeck.addEventListener('click', (e) => {
     }
 
     if (openCardsList.length === 16) {
+        clearInterval(timePassed);
         displayWinMessage();
     }
 });
@@ -157,7 +160,7 @@ function hideCardSymbol(card) {
     card.classList.add('wrong');
     setTimeout(() => {
         card.classList.remove('open', 'show', 'wrong');
-    }, 1000);
+    }, 750);
 }
 
 //change the two given cards class to be match
@@ -200,7 +203,8 @@ function displayWinMessage() {
     const winScreen = document.querySelector('.win-screen');
     const starsCount = document.querySelectorAll('.fa-star').length;
     setTimeout(() => {
-        winSummary.innerHTML = `with ${numberOfMoves} moves and ${starsCount} stars<br><span>Wooooooo!</span>`;
+        const time = minutesLabel.textContent + ":" + secondsLabel.textContent;
+        winSummary.innerHTML = `Finished in ${time} with ${numberOfMoves} moves and ${starsCount} stars<br><span>Wooooooo!</span>`;
         winScreen.classList.remove('hidden');
     }, 1000);
 }
@@ -210,3 +214,21 @@ const playAgainButton = document.querySelector('.btn-reload');
 playAgainButton.addEventListener('click', () => {
     window.location.reload();
 });
+
+//create a simple count up timer
+const minutesLabel = document.getElementById("minutes");
+const secondsLabel = document.getElementById("seconds");
+let totalSeconds = 0;
+function setTime() {
+  ++totalSeconds;
+  secondsLabel.innerHTML = pad(totalSeconds % 60);
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+}
+function pad(val) {
+  const valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}
