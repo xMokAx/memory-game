@@ -176,14 +176,11 @@ function decrementStars() {
     const moves = document.querySelector('.moves');
     const stars = document.querySelectorAll('.fa-star');
     switch (moves.textContent) {
-        case "11":
+        case "13":
             stars[2].className = "fa fa-star-o";
             break;
-        case "15":
-            stars[1].className = "fa fa-star-o";
-            break;
         case "20":
-            stars[0].className = "fa fa-star-o";
+            stars[1].className = "fa fa-star-o";
     }
 }
 
@@ -195,7 +192,7 @@ function displayWinMessage() {
     const starsCount = document.querySelectorAll('.fa-star').length;
     setTimeout(() => {
         const time = minutesLabel.textContent + ":" + secondsLabel.textContent;
-        winSummary.innerHTML = `Finished in ${time} with ${numberOfMoves} moves and ${starsCount} stars.<br><span>Wooooooo!</span>`;
+        winSummary.innerHTML = `Finished in ${time} with ${numberOfMoves} moves and ${starsCount} star(s).<br><span>Wooooooo!</span>`;
         winScreen.classList.remove('hidden');
     }, 1000);
 }
