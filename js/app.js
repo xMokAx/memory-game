@@ -227,7 +227,7 @@ function restart() {
     const moves = document.querySelector('.moves');
     moves.textContent = "0";
     const stars = document.querySelector('.stars').children;
-    for (let i = 0; i < stars.length; i++) {
+    for (let i = stars.length - 1; i > 0; i--) {
         stars[i].firstElementChild.className = "fa fa-star";
     }
     minutesLabel.textContent = "00";
