@@ -124,7 +124,6 @@ cardsDeck.addEventListener('click', (e) => {
         //check if the opensCardsList has more than one card and that its number of cards is an event number
         if (openCardsList.length > 1 && openCardsList.length % 2 === 0) {
             incrementMoves();
-            decrementStars();
             //check if the added card has the same symbol as the last added before it
             if (e.target.childNodes[0].className === openCardsList[1].childNodes[0].className) {
                 cardsMatched(e.target, openCardsList[1]);
@@ -172,18 +171,12 @@ function cardsMatched(card1, card2) {
 function incrementMoves() {
     const moves = document.querySelector('.moves');
     moves.textContent++;
-}
-
-//decrease the number of stars
-function decrementStars() {
-    const moves = document.querySelector('.moves');
+    //decrease the number of stars
     const stars = document.querySelectorAll('.fa-star');
-    switch (moves.textContent) {
-        case "13":
-            stars[2].className = "fa fa-star-o";
-            break;
-        case "20":
-            stars[1].className = "fa fa-star-o";
+    if (moves.textContent === "13") {
+        stars[2].className = "fa fa-star-o";
+    } else if (moves.textContent === "20") {
+        stars[1].className = "fa fa-star-o";
     }
 }
 
