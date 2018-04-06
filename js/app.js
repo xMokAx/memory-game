@@ -1,4 +1,7 @@
-/*
+(function () {
+    'use strict';
+
+    /*
  * Create a list that holds all of your cards
  */
 function createCardsList() {
@@ -87,7 +90,7 @@ let timePassed = setInterval(setTime, 1000);
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length,
+    let currentIndex = array.length,
         temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
@@ -250,3 +253,4 @@ playAgainButton.addEventListener('click', () => {
     winScreen.classList.add('hidden');
     restart();
 });
+}());
