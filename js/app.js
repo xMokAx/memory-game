@@ -114,26 +114,37 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+let isAnimating;
 const cardsDeck = document.querySelector('.deck');
 let openCardsList = [];
 cardsDeck.addEventListener('click', (e) => {
+    if (isAnimating) {
+        return;
+    }
     //check if the clicked element is li and that it has only the card class
     if (e.target.nodeName === 'LI' && e.target.className === "card") {
         displayCardSymbol(e.target);
         createOpenCardsList(e.target);
-        //check if the opensCardsList has more than one card and that its number of cards is an event number
+        //check if the opensCardsList has more than one card and that its number of cards is an even number
         if (openCardsList.length > 1 && openCardsList.length % 2 === 0) {
+            isAnimating = true;
             incrementMoves();
             //check if the added card has the same symbol as the last added before it
             if (e.target.childNodes[0].className === openCardsList[1].childNodes[0].className) {
                 cardsMatched(e.target, openCardsList[1]);
+                setTimeout(() => {
+                    isAnimating = false;
+                }, 500);
             } else {
                 hideCardSymbol(e.target);
                 hideCardSymbol(openCardsList[0]);
+                setTimeout(() => {
+                    isAnimating = false;
+                }, 750);
             }
         }
     }
-
+    
     if (openCardsList.length === 16) {
         clearInterval(timePassed);
         displayWinMessage();
